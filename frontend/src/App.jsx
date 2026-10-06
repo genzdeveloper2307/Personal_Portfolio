@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/$/, "");
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL ||
+  "https://personal-portfolio-jszx.onrender.com/api"
+).replace(/\/$/, "");
 
 const navItems = [
   { id: "home", label: "Home" },
@@ -17,7 +20,7 @@ const fallbackProjects = [
     title: "Personal Portfolio",
     description: "My personal developer portfolio website showcasing my projects, skills, and experience, built with React and Vite.",
     category: "Portfolio",
-    technologies: ["HTML", "CSS", "JavaScript", "React","Node","Mongodb"],
+    technologies: ["HTML", "CSS", "JavaScript", "React", "Node", "Mongodb"],
     github: "https://github.com/genzdeveloper2307",
     liveDemo: "",
     image: "",
@@ -620,17 +623,21 @@ function App() {
             </section>
           )}
         </div>
-
         <aside className="app-image">
-          <div className="image-caption">
-            <span>AKASH P</span>
-            <small>Developer • Learner • Builder</small>
-          </div>
+
           <div className="img-box">
             <div className="img-item">
               <img src="/mine.png" alt="Akash" />
             </div>
           </div>
+
+          {activeTab !== "home" && (
+            <div className="image-caption">
+              <span>AKASH P</span>
+              <small>Developer • Learner • Builder</small>
+            </div>
+          )}
+
         </aside>
       </main>
 
@@ -751,13 +758,13 @@ function SocialLinks({ compact = false }) {
   return (
     <div className={`social-links ${compact ? "compact" : ""}`}>
       <a href="https://github.com/genzdeveloper2307" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.48 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .7Z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.48 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .7Z" /></svg>
       </a>
       <a href="https://www.linkedin.com/in/akash-p-565009418?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.05 3.5A2.45 2.45 0 1 1 5 8.4a2.45 2.45 0 0 1 .05-4.9ZM3.1 9.8h3.9V21H3.1V9.8Zm6.35 0h3.74v1.53h.05c.52-.99 1.8-2.03 3.7-2.03 3.95 0 4.68 2.6 4.68 5.98V21h-3.9v-5.07c0-1.21-.02-2.77-1.69-2.77-1.7 0-1.96 1.32-1.96 2.68V21H9.45V9.8Z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.05 3.5A2.45 2.45 0 1 1 5 8.4a2.45 2.45 0 0 1 .05-4.9ZM3.1 9.8h3.9V21H3.1V9.8Zm6.35 0h3.74v1.53h.05c.52-.99 1.8-2.03 3.7-2.03 3.95 0 4.68 2.6 4.68 5.98V21h-3.9v-5.07c0-1.21-.02-2.77-1.69-2.77-1.7 0-1.96 1.32-1.96 2.68V21H9.45V9.8Z" /></svg>
       </a>
       <a href="https://www.instagram.com/mr._.akash._.07__?igsh=MTc5aDFuMDNmZzBuaQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" className="social-dot"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.4" cy="6.6" r="1.1" className="social-dot" /></svg>
       </a>
     </div>
   );
