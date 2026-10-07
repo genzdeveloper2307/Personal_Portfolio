@@ -270,12 +270,6 @@ function App() {
               ? result.data
               : fallbackProjects
           );
-
-          if (result.data.length === 0) {
-            setProjectsError(
-              "No projects were found in the backend, so the saved portfolio projects are being shown."
-            );
-          }
         }
       } catch (error) {
         if (!cancelled) {
@@ -511,7 +505,7 @@ function App() {
       if (!response.ok || !result.success) {
         throw new Error(
           result.message ||
-            "Unable to send message."
+          "Unable to send message."
         );
       }
 
@@ -591,9 +585,8 @@ function App() {
       </div>
 
       <header
-        className={`navbar ${
-          scrolled ? "scrolled" : ""
-        }`}
+        className={`navbar ${scrolled ? "scrolled" : ""
+          }`}
       >
         <button
           className="logo logo-button"
@@ -603,9 +596,8 @@ function App() {
         </button>
 
         <nav
-          className={`nav-links ${
-            menuOpen ? "open" : ""
-          }`}
+          className={`nav-links ${menuOpen ? "open" : ""
+            }`}
           aria-label="Main navigation"
         >
           {navItems.map((item) => (
@@ -627,9 +619,8 @@ function App() {
 
         <div className="nav-actions">
           <button
-            className={`hamburger ${
-              menuOpen ? "active" : ""
-            }`}
+            className={`hamburger ${menuOpen ? "active" : ""
+              }`}
             onClick={() =>
               setMenuOpen((value) => !value)
             }
@@ -1376,10 +1367,10 @@ function FormField({
           textarea
             ? 2000
             : name === "subject"
-            ? 150
-            : name === "name"
-            ? 100
-            : undefined
+              ? 150
+              : name === "name"
+                ? 100
+                : undefined
         }
       />
     </label>
@@ -1434,9 +1425,8 @@ function SocialLinks({
 }) {
   return (
     <div
-      className={`social-links ${
-        compact ? "compact" : ""
-      }`}
+      className={`social-links ${compact ? "compact" : ""
+        }`}
     >
       <a
         href="https://github.com/genzdeveloper2307"
