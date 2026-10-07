@@ -1085,44 +1085,56 @@ a {
   }
 }
 
+
 @media(max-width:560px) {
+
   .sec-info h1 {
-    font-size: 49px
+    font-size: 49px;
+  }
+
+  .sec-info {
+    text-align: center;
+  }
+
+  .sec-info p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button-row {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   .section-title {
-    font-size: 34px
+    font-size: 34px;
   }
 
   .skills-grid,
   .form-grid {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
   }
 
   .quick-stats {
-    gap: 20px
-  }
-
-  .button-row {
-    align-items: flex-start;
-    flex-direction: column
+    gap: 20px;
   }
 
   .social-links.compact {
-    margin-top: 2px
+    margin-top: 2px;
   }
 
   .site-footer {
     justify-content: center;
-    text-align: center
+    text-align: center;
   }
 
   .app-image {
-    min-height: 290px
+    min-height: 290px;
   }
 
   .img-box {
-    width: 245px
+    width: 245px;
   }
 }
 
