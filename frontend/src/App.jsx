@@ -21,7 +21,14 @@ const fallbackProjects = [
     description:
       "My personal developer portfolio website showcasing my projects, skills, and experience, built with React and Vite.",
     category: "Portfolio",
-    technologies: ["HTML", "CSS", "JavaScript", "React", "Node", "MongoDB"],
+    technologies: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node",
+      "MongoDB"
+    ],
     github: "https://github.com/genzdeveloper2307",
     liveDemo: "",
     image: "",
@@ -49,7 +56,12 @@ const fallbackProjects = [
     description:
       "A full-stack weather application that provides real-time weather information, built with the MERN-style stack.",
     category: "Full Stack",
-    technologies: ["React", "Node.js", "Express.js", "MongoDB"],
+    technologies: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB"
+    ],
     github: "https://github.com/genzdeveloper2307",
     liveDemo: "",
     image: "",
@@ -81,7 +93,6 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [projects, setProjects] = useState([]);
   const [projectsLoading, setProjectsLoading] = useState(true);
-  const [projectsError, setProjectsError] = useState("");
   const [copied, setCopied] = useState(false);
   const [formStatus, setFormStatus] = useState({
     type: "",
@@ -90,7 +101,10 @@ function App() {
   const [sending, setSending] = useState(false);
   const [typedText, setTypedText] = useState("");
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [mouse, setMouse] = useState({ x: -100, y: -100 });
+  const [mouse, setMouse] = useState({
+    x: -100,
+    y: -100
+  });
 
   const typingIndex = useRef(0);
   const typingChar = useRef(0);
@@ -98,12 +112,19 @@ function App() {
   const typingTimer = useRef(null);
 
   const words = useMemo(
-    () => ["a BCA student", "a learner", "a beginner", "a web developer"],
+    () => [
+      "a BCA student",
+      "a learner",
+      "a beginner",
+      "a web developer"
+    ],
     []
   );
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 900);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 900);
 
     return () => clearTimeout(timer);
   }, []);
@@ -113,14 +134,22 @@ function App() {
       "(prefers-reduced-motion: reduce)"
     );
 
-    const updateMotion = () => setReducedMotion(motionQuery.matches);
+    const updateMotion = () => {
+      setReducedMotion(motionQuery.matches);
+    };
 
     updateMotion();
 
-    motionQuery.addEventListener?.("change", updateMotion);
+    motionQuery.addEventListener?.(
+      "change",
+      updateMotion
+    );
 
     return () =>
-      motionQuery.removeEventListener?.("change", updateMotion);
+      motionQuery.removeEventListener?.(
+        "change",
+        updateMotion
+      );
   }, []);
 
   useEffect(() => {
@@ -135,23 +164,35 @@ function App() {
       if (!deleting.current) {
         typingChar.current += 1;
 
-        setTypedText(word.slice(0, typingChar.current));
+        setTypedText(
+          word.slice(0, typingChar.current)
+        );
 
-        if (typingChar.current >= word.length) {
+        if (
+          typingChar.current >= word.length
+        ) {
           deleting.current = true;
 
-          typingTimer.current = setTimeout(tick, 1300);
+          typingTimer.current = setTimeout(
+            tick,
+            1300
+          );
+
           return;
         }
       } else {
         typingChar.current -= 1;
 
-        setTypedText(word.slice(0, typingChar.current));
+        setTypedText(
+          word.slice(0, typingChar.current)
+        );
 
         if (typingChar.current <= 0) {
           deleting.current = false;
+
           typingIndex.current =
-            (typingIndex.current + 1) % words.length;
+            (typingIndex.current + 1) %
+            words.length;
         }
       }
 
@@ -161,9 +202,13 @@ function App() {
       );
     };
 
-    typingTimer.current = setTimeout(tick, 500);
+    typingTimer.current = setTimeout(
+      tick,
+      500
+    );
 
-    return () => clearTimeout(typingTimer.current);
+    return () =>
+      clearTimeout(typingTimer.current);
   }, [reducedMotion, words]);
 
   useEffect(() => {
@@ -171,39 +216,61 @@ function App() {
       const y = window.scrollY;
 
       const height =
-        document.documentElement.scrollHeight - window.innerHeight;
+        document.documentElement.scrollHeight -
+        window.innerHeight;
 
       setScrolled(y > 40);
       setShowTop(y > 450);
 
       setProgress(
-        height > 0 ? Math.min(100, (y / height) * 100) : 0
+        height > 0
+          ? Math.min(100, (y / height) * 100)
+          : 0
       );
     };
 
     onScroll();
 
-    window.addEventListener("scroll", onScroll, {
-      passive: true
-    });
+    window.addEventListener(
+      "scroll",
+      onScroll,
+      { passive: true }
+    );
 
     return () =>
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener(
+        "scroll",
+        onScroll
+      );
   }, []);
 
   useEffect(() => {
     const onHash = () => {
-      const next = window.location.hash.replace("#", "");
+      const next =
+        window.location.hash.replace(
+          "#",
+          ""
+        );
 
-      if (navItems.some((item) => item.id === next)) {
+      if (
+        navItems.some(
+          (item) => item.id === next
+        )
+      ) {
         setActiveTab(next);
       }
     };
 
-    window.addEventListener("hashchange", onHash);
+    window.addEventListener(
+      "hashchange",
+      onHash
+    );
 
     return () =>
-      window.removeEventListener("hashchange", onHash);
+      window.removeEventListener(
+        "hashchange",
+        onHash
+      );
   }, []);
 
   useEffect(() => {
@@ -214,27 +281,39 @@ function App() {
       }
     };
 
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener(
+      "keydown",
+      onKeyDown
+    );
 
     return () =>
-      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener(
+        "keydown",
+        onKeyDown
+      );
   }, []);
 
   useEffect(() => {
     if (reducedMotion) return;
 
-    const onMouseMove = (event) =>
+    const onMouseMove = (event) => {
       setMouse({
         x: event.clientX,
         y: event.clientY
       });
+    };
 
-    window.addEventListener("mousemove", onMouseMove, {
-      passive: true
-    });
+    window.addEventListener(
+      "mousemove",
+      onMouseMove,
+      { passive: true }
+    );
 
     return () =>
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener(
+        "mousemove",
+        onMouseMove
+      );
   }, [reducedMotion]);
 
   // Backend: GET /api/projects
@@ -243,14 +322,16 @@ function App() {
 
     const loadProjects = async () => {
       setProjectsLoading(true);
-      setProjectsError("");
 
       try {
         const response = await fetch(
           `${API_BASE_URL}/projects`
         );
 
-        const result = await response.json().catch(() => ({}));
+        const result =
+          await response.json().catch(
+            () => ({})
+          );
 
         if (
           !response.ok ||
@@ -258,13 +339,15 @@ function App() {
           !Array.isArray(result.data)
         ) {
           throw new Error(
-            result.message || "Unable to load projects."
+            result.message ||
+              "Unable to load projects."
           );
         }
 
         if (!cancelled) {
           // Use backend projects when available.
-          // If MongoDB has no projects, show fallback projects.
+          // If MongoDB has no projects,
+          // show the saved fallback projects.
           setProjects(
             result.data.length > 0
               ? result.data
@@ -273,11 +356,9 @@ function App() {
         }
       } catch (error) {
         if (!cancelled) {
+          // If backend is unavailable,
+          // show the saved fallback projects.
           setProjects(fallbackProjects);
-
-          setProjectsError(
-            "Projects could not be loaded from the backend, so the saved portfolio projects are being shown."
-          );
         }
       } finally {
         if (!cancelled) {
@@ -297,19 +378,28 @@ function App() {
   useEffect(() => {
     const trackVisitor = async () => {
       try {
-        await fetch(`${API_BASE_URL}/visitors/track`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            page: window.location.pathname || "/",
-            referrer: document.referrer || "direct"
-          }),
-          keepalive: true
-        });
+        await fetch(
+          `${API_BASE_URL}/visitors/track`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+            body: JSON.stringify({
+              page:
+                window.location.pathname ||
+                "/",
+              referrer:
+                document.referrer ||
+                "direct"
+            }),
+            keepalive: true
+          }
+        );
       } catch {
-        // Visitor tracking is non-critical.
+        // Visitor tracking is non-critical
+        // and must never break the UI.
       }
     };
 
@@ -328,7 +418,9 @@ function App() {
 
     window.scrollTo({
       top: 0,
-      behavior: reducedMotion ? "auto" : "smooth"
+      behavior: reducedMotion
+        ? "auto"
+        : "smooth"
     });
   };
 
@@ -340,7 +432,9 @@ function App() {
         values.add(project.category);
       }
 
-      (project.technologies || []).forEach((technology) => {
+      (
+        project.technologies || []
+      ).forEach((technology) => {
         values.add(technology);
       });
     });
@@ -352,13 +446,19 @@ function App() {
       "Backend"
     ];
 
-    const matchingPreferred = preferred.filter((item) =>
-      values.has(item)
-    );
+    const matchingPreferred =
+      preferred.filter((item) =>
+        values.has(item)
+      );
 
     const remaining = [...values]
-      .filter((item) => !preferred.includes(item))
-      .sort((a, b) => a.localeCompare(b));
+      .filter(
+        (item) =>
+          !preferred.includes(item)
+      )
+      .sort((a, b) =>
+        a.localeCompare(b)
+      );
 
     return [
       "All",
@@ -374,8 +474,11 @@ function App() {
 
     return projects.filter(
       (project) =>
-        project.category === projectFilter ||
-        (project.technologies || []).includes(projectFilter)
+        project.category ===
+          projectFilter ||
+        (
+          project.technologies || []
+        ).includes(projectFilter)
     );
   }, [projectFilter, projects]);
 
@@ -387,7 +490,10 @@ function App() {
 
       setCopied(true);
 
-      setTimeout(() => setCopied(false), 1800);
+      setTimeout(
+        () => setCopied(false),
+        1800
+      );
     } catch {
       setCopied(false);
     }
@@ -459,7 +565,9 @@ function App() {
       return;
     }
 
-    if (data.message.trim().length < 10) {
+    if (
+      data.message.trim().length < 10
+    ) {
       setFormStatus({
         type: "error",
         message:
@@ -469,7 +577,9 @@ function App() {
       return;
     }
 
-    if (data.message.trim().length > 2000) {
+    if (
+      data.message.trim().length > 2000
+    ) {
       setFormStatus({
         type: "error",
         message:
@@ -487,25 +597,32 @@ function App() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type":
+              "application/json"
           },
           body: JSON.stringify({
             name: data.name.trim(),
             email: data.email.trim(),
-            subject: data.subject?.trim() || "",
-            message: data.message.trim()
+            subject:
+              data.subject?.trim() || "",
+            message:
+              data.message.trim()
           })
         }
       );
 
-      const result = await response
-        .json()
-        .catch(() => ({}));
+      const result =
+        await response.json().catch(
+          () => ({})
+        );
 
-      if (!response.ok || !result.success) {
+      if (
+        !response.ok ||
+        !result.success
+      ) {
         throw new Error(
           result.message ||
-          "Unable to send message."
+            "Unable to send message."
         );
       }
 
@@ -585,19 +702,23 @@ function App() {
       </div>
 
       <header
-        className={`navbar ${scrolled ? "scrolled" : ""
-          }`}
+        className={`navbar ${
+          scrolled ? "scrolled" : ""
+        }`}
       >
         <button
           className="logo logo-button"
-          onClick={() => navigate("home")}
+          onClick={() =>
+            navigate("home")
+          }
         >
           @PORTFOLIO.
         </button>
 
         <nav
-          className={`nav-links ${menuOpen ? "open" : ""
-            }`}
+          className={`nav-links ${
+            menuOpen ? "open" : ""
+          }`}
           aria-label="Main navigation"
         >
           {navItems.map((item) => (
@@ -619,10 +740,13 @@ function App() {
 
         <div className="nav-actions">
           <button
-            className={`hamburger ${menuOpen ? "active" : ""
-              }`}
+            className={`hamburger ${
+              menuOpen ? "active" : ""
+            }`}
             onClick={() =>
-              setMenuOpen((value) => !value)
+              setMenuOpen(
+                (value) => !value
+              )
             }
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
@@ -655,10 +779,12 @@ function App() {
                 </h2>
 
                 <p>
-                  A passionate BCA student turning
-                  ideas into real-world applications
-                  through code. Learning, building and
-                  growing one project at a time.
+                  A passionate BCA student
+                  turning ideas into
+                  real-world applications
+                  through code. Learning,
+                  building and growing one
+                  project at a time.
                 </p>
 
                 <div className="button-row">
@@ -688,7 +814,9 @@ function App() {
                     <strong>
                       {projects.length}+
                     </strong>
-                    <span>Projects</span>
+                    <span>
+                      Projects
+                    </span>
                   </div>
 
                   <div>
@@ -760,16 +888,19 @@ function App() {
                   </h3>
 
                   <p>
-                    I enjoy learning by building
-                    practical projects. My current focus
-                    is strengthening frontend development
-                    while connecting it with Node.js,
+                    I enjoy learning by
+                    building practical
+                    projects. My current focus
+                    is strengthening frontend
+                    development while
+                    connecting it with Node.js,
                     Express and MongoDB.
                   </p>
 
                   <div className="availability">
                     <span />
-                    Open to learning opportunities
+                    Open to learning
+                    opportunities
                   </div>
                 </div>
               </div>
@@ -784,12 +915,6 @@ function App() {
                 subtitle="Projects are loaded directly from the backend Projects API."
               />
 
-              {projectsError && (
-                <p className="form-status error">
-                  {projectsError}
-                </p>
-              )}
-
               <div
                 className="filter-row"
                 role="group"
@@ -800,12 +925,15 @@ function App() {
                     <button
                       key={filter}
                       className={
-                        projectFilter === filter
+                        projectFilter ===
+                        filter
                           ? "filter active"
                           : "filter"
                       }
                       onClick={() =>
-                        setProjectFilter(filter)
+                        setProjectFilter(
+                          filter
+                        )
                       }
                     >
                       {filter}
@@ -821,25 +949,30 @@ function App() {
                   </span>
 
                   <p>
-                    Fetching active projects from
-                    the backend...
+                    Fetching active
+                    projects from the
+                    backend...
                   </p>
                 </div>
-              ) : filteredProjects.length === 0 ? (
+              ) : filteredProjects.length ===
+                0 ? (
                 <div className="glass-card about-note">
                   <span className="card-label">
                     NO PROJECTS
                   </span>
 
                   <p>
-                    No active projects match this
-                    filter.
+                    No active projects
+                    match this filter.
                   </p>
                 </div>
               ) : (
                 <div className="card-grid">
                   {filteredProjects.map(
-                    (project, index) => (
+                    (
+                      project,
+                      index
+                    ) => (
                       <article
                         className="mini-card project-card"
                         key={
@@ -850,12 +983,17 @@ function App() {
                         <div className="card-icon">
                           {project.image ? (
                             <img
-                              src={project.image}
+                              src={
+                                project.image
+                              }
                               alt=""
                               style={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
+                                width:
+                                  "100%",
+                                height:
+                                  "100%",
+                                objectFit:
+                                  "cover",
                                 borderRadius:
                                   "12px"
                               }}
@@ -876,7 +1014,10 @@ function App() {
                           <span>
                             {String(
                               index + 1
-                            ).padStart(2, "0")}
+                            ).padStart(
+                              2,
+                              "0"
+                            )}
                           </span>
                         </div>
 
@@ -885,7 +1026,9 @@ function App() {
                         </h3>
 
                         <p>
-                          {project.description}
+                          {
+                            project.description
+                          }
                         </p>
 
                         <div className="tag-list">
@@ -893,12 +1036,23 @@ function App() {
                             project.technologies ||
                             []
                           )
-                            .slice(0, 4)
-                            .map((tech) => (
-                              <span key={tech}>
-                                {tech}
-                              </span>
-                            ))}
+                            .slice(
+                              0,
+                              4
+                            )
+                            .map(
+                              (
+                                tech
+                              ) => (
+                                <span
+                                  key={
+                                    tech
+                                  }
+                                >
+                                  {tech}
+                                </span>
+                              )
+                            )}
                         </div>
 
                         <div className="card-actions">
@@ -942,35 +1096,44 @@ function App() {
               />
 
               <div className="skills-grid">
-                {skills.map((skill) => (
-                  <div
-                    className="skill-card"
-                    key={skill.name}
-                  >
-                    <div className="skill-head">
-                      <strong>
-                        {skill.name}
-                      </strong>
+                {skills.map(
+                  (skill) => (
+                    <div
+                      className="skill-card"
+                      key={
+                        skill.name
+                      }
+                    >
+                      <div className="skill-head">
+                        <strong>
+                          {
+                            skill.name
+                          }
+                        </strong>
 
-                      <span>
-                        {skill.group}
-                      </span>
+                        <span>
+                          {
+                            skill.group
+                          }
+                        </span>
+                      </div>
+
+                      <div className="skill-track">
+                        <span
+                          style={{
+                            width: `${skill.level}%`
+                          }}
+                        />
+                      </div>
+
+                      <small>
+                        {skill.level}%
+                        learning
+                        progress
+                      </small>
                     </div>
-
-                    <div className="skill-track">
-                      <span
-                        style={{
-                          width: `${skill.level}%`
-                        }}
-                      />
-                    </div>
-
-                    <small>
-                      {skill.level}% learning
-                      progress
-                    </small>
-                  </div>
-                ))}
+                  )
+                )}
               </div>
 
               <div className="learning-card">
@@ -980,15 +1143,18 @@ function App() {
                   </span>
 
                   <h3>
-                    React → Node.js → MongoDB →
-                    Full Stack Projects
+                    React → Node.js →
+                    MongoDB → Full
+                    Stack Projects
                   </h3>
                 </div>
 
                 <button
                   className="secondary-button"
                   onClick={() =>
-                    navigate("projects")
+                    navigate(
+                      "projects"
+                    )
                   }
                 >
                   See projects
@@ -1044,7 +1210,9 @@ function App() {
               <div className="contact-layout">
                 <form
                   className="contact-form glass-card"
-                  onSubmit={handleContact}
+                  onSubmit={
+                    handleContact
+                  }
                   noValidate
                 >
                   <div className="form-grid">
@@ -1079,7 +1247,9 @@ function App() {
                     <button
                       className="primary-button"
                       type="submit"
-                      disabled={sending}
+                      disabled={
+                        sending
+                      }
                     >
                       {sending
                         ? "Sending..."
@@ -1089,7 +1259,9 @@ function App() {
                     <span
                       className={`form-status ${formStatus.type}`}
                     >
-                      {formStatus.message}
+                      {
+                        formStatus.message
+                      }
                     </span>
                   </div>
                 </form>
@@ -1099,7 +1271,9 @@ function App() {
                     icon="✉"
                     title="Email"
                     value="fullstackdeveloper2307@gmail.com"
-                    action={copyEmail}
+                    action={
+                      copyEmail
+                    }
                   >
                     {copied
                       ? "Copied!"
@@ -1150,7 +1324,9 @@ function App() {
       <footer className="site-footer">
         <button
           className="logo logo-button"
-          onClick={() => navigate("home")}
+          onClick={() =>
+            navigate("home")
+          }
         >
           @PORTFOLIO.
         </button>
@@ -1199,7 +1375,9 @@ function App() {
             <button
               className="modal-close"
               onClick={() =>
-                setSelectedProject(null)
+                setSelectedProject(
+                  null
+                )
               }
               aria-label="Close"
             >
@@ -1211,28 +1389,40 @@ function App() {
             </span>
 
             <h2 id="project-title">
-              {selectedProject.title}
+              {
+                selectedProject.title
+              }
             </h2>
 
             {selectedProject.category && (
               <p className="project-modal-category">
-                {selectedProject.category}
+                {
+                  selectedProject.category
+                }
               </p>
             )}
 
             <p>
-              {selectedProject.description}
+              {
+                selectedProject.description
+              }
             </p>
 
             <div className="tag-list">
               {(
                 selectedProject.technologies ||
                 []
-              ).map((technology) => (
-                <span key={technology}>
-                  {technology}
-                </span>
-              ))}
+              ).map(
+                (technology) => (
+                  <span
+                    key={
+                      technology
+                    }
+                  >
+                    {technology}
+                  </span>
+                )
+              )}
             </div>
 
             <div className="button-row">
@@ -1271,7 +1461,10 @@ function App() {
 
 function getInitialTab() {
   const value =
-    window.location.hash.replace("#", "");
+    window.location.hash.replace(
+      "#",
+      ""
+    );
 
   return navItems.some(
     (item) => item.id === value
@@ -1361,16 +1554,22 @@ function FormField({
             : type
         }
         placeholder={placeholder}
-        required={name !== "subject"}
-        rows={textarea ? 5 : undefined}
+        required={
+          name !== "subject"
+        }
+        rows={
+          textarea
+            ? 5
+            : undefined
+        }
         maxLength={
           textarea
             ? 2000
             : name === "subject"
-              ? 150
-              : name === "name"
-                ? 100
-                : undefined
+            ? 150
+            : name === "name"
+            ? 100
+            : undefined
         }
       />
     </label>
@@ -1425,8 +1624,9 @@ function SocialLinks({
 }) {
   return (
     <div
-      className={`social-links ${compact ? "compact" : ""
-        }`}
+      className={`social-links ${
+        compact ? "compact" : ""
+      }`}
     >
       <a
         href="https://github.com/genzdeveloper2307"
