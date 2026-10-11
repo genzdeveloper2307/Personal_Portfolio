@@ -30,7 +30,7 @@ const fallbackProjects = [
       "MongoDB"
     ],
     github: "https://github.com/genzdeveloper2307",
-    liveDemo: "",
+    liveDemo: "https://personal-portfolio-dh6t.onrender.com/",
     image: "",
     featured: true,
     active: true,
@@ -63,7 +63,7 @@ const fallbackProjects = [
       "MongoDB"
     ],
     github: "https://github.com/genzdeveloper2307",
-    liveDemo: "",
+    liveDemo: "https://ww-frontend-gmqe.onrender.com",
     image: "",
     featured: true,
     active: true,
@@ -72,14 +72,14 @@ const fallbackProjects = [
 ];
 
 const skills = [
-  { name: "HTML", level: 85, group: "Frontend" },
-  { name: "CSS", level: 80, group: "Frontend" },
-  { name: "JavaScript", level: 72, group: "Frontend" },
-  { name: "React", level: 62, group: "Frontend" },
-  { name: "Node.js", level: 58, group: "Backend" },
-  { name: "Express.js", level: 55, group: "Backend" },
-  { name: "MongoDB", level: 55, group: "Database" },
-  { name: "Git & GitHub", level: 68, group: "Tools" }
+  { name: "HTML", level: 50, group: "Frontend" },
+  { name: "CSS", level: 50, group: "Frontend" },
+  { name: "JavaScript", level: 40, group: "Frontend" },
+  { name: "React", level: 40, group: "Frontend" },
+  { name: "Node.js", level: 35, group: "Backend" },
+  { name: "Express.js", level: 35, group: "Backend" },
+  { name: "MongoDB", level: 45, group: "Database" },
+  { name: "Git & GitHub", level: 50, group: "Tools" }
 ];
 
 function App() {
@@ -789,7 +789,7 @@ function App() {
 
                 <div className="button-row">
                   <a
-                    href="https://canva.link/gkgllfi16rje3ps"
+                    href="\AKASH.P resume.pdf"
                     className="primary-button"
                     target="_blank"
                     rel="noopener noreferrer"
