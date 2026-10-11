@@ -789,7 +789,7 @@ function App() {
 
                 <div className="button-row">
                   <a
-                    href="\AKASH.P resume.pdf"
+                    href="\AKASH P Resume.pdf"
                     className="primary-button"
                     target="_blank"
                     rel="noopener noreferrer"
